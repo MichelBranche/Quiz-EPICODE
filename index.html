@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Epicode Welcome</title>
+    <link rel="stylesheet" href="css/welcome.css" />
+  </head>
+
+  <body>
+    <header>
+      <img src="assets/epicode_logo.png" alt="EPICODE Logo" class="logo" />
+    </header>
+
+    <main>
+      <section class="welcome-section">
+        <h1 class="main-title">
+          <span>Welcome to</span>
+          <span>your exam</span>
+        </h1>
+
+        <div class="instructions">
+          <h3>Instructions</h3>
+          <p>
+            We don't expect most engineers to know the answers to all of these
+            questions, so don't worry if you're unsure of a few of them.
+          </p>
+
+          <ul>
+            <li>
+              Each question is <strong>timed</strong> and can only be
+              <strong>answered once</strong>.
+            </li>
+            <li>
+              Changing browser tab or opening other windows will
+              <strong>invalidate the question</strong>.
+            </li>
+            <li>This exam will take approx. <strong>0-5 minutes</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="proceed-form">
+          <div>
+            <input type="checkbox" id="check" />
+            <p>I promise to answer myself without help from anyone</p>
+          </div>
+
+          <button type="submit" class="btn-proceed" disabled>PROCEED</button>
+        </div>
+      </section>
+
+      <section class="quiz-container">
+        <div class="timer-wrapper">
+          <div class="timer-circle"></div>
+        </div>
+
+        <div id="container">
+          <div id="questions"></div>
+          <div id="answers"></div>
+        </div>
+        <div id="contatore">
+          <p class="question-counter">
+            QUESTION <span id="currentQuestion"></span>
+            <span class="total-questions">
+              /
+              <span id="totalQuestions"></span>
+            </span>
+          </p>
+        </div>
+      </section>
+
+      <section class="result-section">
+        <h3>Your score:</h3>
+        <div id="resultContainer"></div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.1.0/dist/confetti.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
