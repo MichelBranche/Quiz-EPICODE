@@ -1,39 +1,38 @@
-# EPICODE Benchmark Quiz (Build Week) – TEAM4
+# EPICODE Benchmark Quiz | Build Week (TEAM4)
 
-Single-page web app that reproduces the EPICODE “Benchmark Exam” experience: Welcome screen, timed multiple-choice quiz, and final results.  
-Built as a team project during Build Week, with a focus on clean UI, responsive layout, and a smooth quiz flow.
+Web app single-page che riproduce l’esperienza del “Benchmark Exam” di EPICODE: schermata di benvenuto, quiz a tempo con domande a scelta multipla e schermata risultati finali.
 
-## Preview
-- **Mockups included** in `/mockup` (welcome + quiz screen).
-- (Optional) **Live demo**: _add your GitHub Pages link here_
+## Live Demo
+- GitHub Pages: **INSERISCI QUI IL LINK**
+  - Esempio [Inferenza]: https://cloroalclero.github.io/TEAM4-Quiz-Test/
 
----
+## Screenshots
+Welcome  
+![Welcome Mockup](mockup/exam_01_welcome.png)
 
-## Features
-- **Single-page flow** (no page reloads): Welcome → Quiz → Results
-- **Timed questions** with visual timer ring
-- **Multiple choice** questions (one answer only)
-- **Randomized answers** per question
-- **Score tracking** and final results screen
-- **Responsive UI** (desktop + mobile)
+Quiz  
+![Quiz Mockup](mockup/exam_02_test.png)
 
----
+## Funzionalità
+- Flusso single-page: **Welcome → Quiz → Results**
+- Domande a scelta multipla (una sola risposta)
+- Risposte renderizzate dinamicamente
+- Timer per domanda con ring circolare
+- Calcolo punteggio e schermata finale risultati
+- UI responsive (desktop e mobile)
 
 ## Tech Stack
-- **HTML5**
-- **CSS3**
-- **JavaScript (Vanilla)**
-- Optional helper: **progressbar.js** (for the circular timer ring)
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- Libreria timer ring: progressbar.js (se presente nel progetto)
 
----
-
-## Project Structure
-```text
+## Struttura progetto
+```txt
 TEAM4-Quiz-Test/
-├── assets/                # Images (background, logo, icons)
-├── css/                   # Stylesheets
-│   └── welcome.css        # Main styles (welcome + quiz UI)
-├── js/                    # (if present) scripts / libs
-├── mockup/                # Reference screens from the exam
-├── index.html             # Single-page app entry
-└── script.js              # Quiz logic (render, timer, score, results)
+├── assets/                 # Immagini (background, logo)
+├── css/
+│   └── welcome.css         # Stili (welcome + quiz UI)
+├── mockup/                 # Reference screens del benchmark
+├── index.html              # Entry single-page
+└── script.js               # Logica quiz (render, timer, score, results)
