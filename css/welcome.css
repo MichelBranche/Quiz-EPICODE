@@ -1,27 +1,58 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700&display=swap");
+/* =========================================================
+   welcome.css
+   Percorso: /css/welcome.css
+   Nota: il CSS punta a ../assets/bg.jpg (perché è dentro /css)
+   ========================================================= */
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;600;700&display=swap");
+
+:root {
+  --bg-solid: #0b1130;
+  --cyan: #00ffff;
+  --magenta: #d20094;
+  --purple: #900080;
+
+  --white: #ffffff;
+  --text-soft: rgba(255, 255, 255, 0.85);
+
+  --stroke: rgba(255, 255, 255, 0.45);
+  --stroke-strong: rgba(255, 255, 255, 0.65);
+
+  --shadow: rgba(0, 0, 0, 0.28);
+}
+
+/* Reset minimo */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/*html,
+html,
 body {
-    height: 100%;
-}*/
+  height: 100%;
+}
 
+/* Sfondo con fallback: anche se bg.jpg non carica, NON diventa bianco */
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #0b1130 url("../assets/bg.jpg") center/cover no-repeat fixed;
-  background-size: cover;
+
+  background-color: var(--bg-solid);
+  background-image: url("../assets/bg.jpg");
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
-  font-family: "Outfit", sans-serif;
+  background-attachment: fixed;
+
+  font-family: "Outfit", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--white);
 }
 
+/* =========================
+   HEADER
+   ========================= */
 header {
   padding: 24px 60px;
   background: transparent;
@@ -30,9 +61,12 @@ header {
 header img.logo {
   height: 40px;
   width: auto;
-  margin: 0;
+  display: block;
 }
 
+/* =========================
+   MAIN
+   ========================= */
 main {
   flex: 1;
   display: flex;
@@ -41,8 +75,20 @@ main {
   padding: 40px 60px;
 }
 
+/* =========================
+   WELCOME VIEW
+   ========================= */
+.welcome-section {
+  max-width: 1020px;
+  margin: 0 auto;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .main-title {
-  height: auto;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -50,13 +96,13 @@ main {
 
 .main-title span {
   display: block;
-  color: white;
+  color: var(--white);
   font-size: 60px;
   line-height: 0.95;
 }
 
 .main-title span:first-child {
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .main-title span:last-child {
@@ -64,42 +110,49 @@ main {
 }
 
 h3 {
-  font-weight: normal;
-  color: #d20094;
+  font-weight: 400;
+  color: var(--magenta);
   margin-top: 20px;
 }
 
 .instructions p {
-  color: white;
+  color: var(--white);
   font-size: 16px;
+  line-height: 1.5;
+  max-width: 720px;
+  margin-top: 10px;
 }
 
-ul {
+.instructions ul {
   padding-left: 18px;
   margin-top: 40px;
-  color: white;
+  color: var(--white);
   font-size: 16px;
   font-weight: 400;
+  max-width: 760px;
 }
 
-li {
-  padding: 3px;
+.instructions li {
+  padding: 3px 0;
 }
 
+/* Form in basso come nel mockup, senza hack tipo padding-top:200px */
 .proceed-form {
-  margin-top: 30px;
-  color: white;
+  margin-top: auto;
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 200px;
+  padding-top: 0;
+  padding-bottom: 22px;
+  gap: 18px;
 }
 
 .proceed-form div {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: white;
+  font-family: "Inter", system-ui, sans-serif;
   font-size: 14px;
   cursor: pointer;
 }
@@ -112,110 +165,74 @@ li {
 .proceed-form button {
   border: none;
   padding: 14px 46px;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.5px;
   border-radius: 6px;
-  background: #00ffff;
+
+  background: var(--cyan);
   color: #0a0a23;
+
   cursor: pointer;
-  transition:
-    opacity 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .proceed-form button:disabled {
-  background-color: grey;
+  background-color: #7b7b7b;
   opacity: 0.35;
   box-shadow: none;
   cursor: not-allowed;
 }
 
 .proceed-form button:enabled {
-  background-color: #00ffff;
   opacity: 1;
-  cursor: pointer;
-
-  box-shadow:
-    0 0 18px rgba(0, 255, 255, 0.55),
-    0 0 40px rgba(0, 255, 255, 0.35);
+  box-shadow: 0 0 18px rgba(0, 255, 255, 0.55), 0 0 40px rgba(0, 255, 255, 0.35);
 }
 
 .proceed-form button:enabled:hover {
   transform: translateY(-1px);
-  box-shadow:
-    0 0 24px rgba(0, 255, 255, 0.75),
-    0 0 55px rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 24px rgba(0, 255, 255, 0.75), 0 0 55px rgba(0, 255, 255, 0.5);
 }
 
-.quiz-container .timer-wrapper {
-  position: absolute;
-  top: 0;
-  right: 60px;
-  z-index: 50;
-  width: 140px;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-50%);
+/* =========================
+   QUIZ VIEW (base)
+   ========================= */
+
+/* Di default: quiz e result nascosti */
+.quiz-container,
+.result-section {
+  display: none;
 }
 
-.timer-text {
-  text-align: center;
-  margin: 0 auto;
-  display: block;
-  line-height: 1.05;
-  color: white;
-  font-weight: 400;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  opacity: 0.85;
-}
-
-.timer-seconds {
-  text-align: center;
-  margin: 0 auto;
-  display: block;
-  line-height: 1;
-  color: white;
-  font-weight: 600;
-  font-size: 44px;
-}
-
-.quiz-container .timer-circle .progressbar-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-}
-
+/* Quando quiz attivo: via padding del main per centraggio perfetto */
 body.quiz-active main {
   padding: 0;
 }
 
-.quiz-container .timer-circle {
-  width: 140px;
-  height: 140px;
-}
-
-body.quiz-active header {
-  display: block;
-}
-
-.quiz-container {
+/* Quiz container: centratura tipo mockup */
+body.quiz-active .quiz-container {
+  display: flex;
   position: relative;
   flex: 1;
-  display: flex;
+
   flex-direction: column;
   justify-content: center;
   padding: 0 60px;
+
+  min-height: calc(100vh - 88px);
 }
 
+/* Nascondi welcome quando quiz attivo */
+body.quiz-active .welcome-section {
+  display: none;
+}
+
+body.quiz-active .result-section {
+  display: none;
+}
+
+/* Contenitore centrale (domanda + risposte) */
 #container {
   flex: 1;
   display: flex;
@@ -225,72 +242,89 @@ body.quiz-active header {
   padding-top: 26px;
 }
 
+/* Timer top-right pulito */
+.quiz-container .timer-wrapper {
+  position: fixed;
+  top: 34px;
+  right: 60px;
+
+  z-index: 50;
+
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Se usate progressbar.js */
+.quiz-container .timer-circle {
+  width: 140px;
+  height: 140px;
+}
+
+.quiz-container .timer-circle .progressbar-text {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.timer-text {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  line-height: 1.05;
+  color: var(--white);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  opacity: 0.85;
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+.timer-seconds {
+  text-align: center;
+  margin: 2px auto;
+  display: block;
+  line-height: 1;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 44px;
+  font-family: "Outfit", system-ui, sans-serif;
+}
+
+/* Domanda */
 #questions {
   text-align: center;
   max-width: 780px;
   margin: 0 auto;
   display: block;
+
   font-size: 60px;
   line-height: 1.08;
-  color: white;
+  color: var(--white);
   font-weight: 300;
   letter-spacing: -0.02em;
 }
 
-/*#questions p {
-    display: block;
-    font-family: 'Outfit', sans-serif;
-    font-size: 54px;
-    line-height: 1.05;
-    color: white;
-    font-weight: 400;
-}
-
-/*#questions span:first-child {
-    font-weight: 400;
-}
-
-#questions span:last-child {
-    font-weight: 700;
-}*/
-
+/* Griglia risposte */
 #answers {
   width: min(860px, 92vw);
-  margin: 80px;
+  margin: 52px auto 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 26px 54px;
 }
 
 .answer {
+  position: relative;
   cursor: pointer;
 }
 
-#contatore {
-  position: absolute;
-  left: 50%;
-  bottom: 38px;
-  transform: translateX(-50%);
-  text-align: center;
-  padding: 0;
-}
-
-.question-counter {
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.total-questions {
-  color: #d20094;
-}
-
-.answer {
-  position: relative;
-}
-
+/* Radio invisibile che copre tutta la card */
 .answer input[type="radio"] {
   position: absolute;
   inset: 0;
@@ -302,120 +336,89 @@ body.quiz-active header {
   z-index: 2;
 }
 
+/* Pill */
 .answerBox {
   position: relative;
   z-index: 1;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 18px 30px;
   border-radius: 999px;
 
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.04)
-  );
-  border: 2px solid rgba(255, 255, 255, 0.45);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04));
+  border: 2px solid var(--stroke);
 
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 28px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 
-  transition:
-    transform 0.18s ease,
-    border-color 0.18s ease,
-    filter 0.18s ease,
-    box-shadow 0.18s ease,
-    background 0.18s ease;
+  transition: transform 0.18s ease, border-color 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
 .answerBox .text {
-  color: white;
-  font-family: "Inter", sans-serif;
+  color: var(--white);
+  font-family: "Inter", system-ui, sans-serif;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.3px;
 }
 
+/* Hover sobrio (non magenta pieno) */
 .answer:hover .answerBox {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.65);
+  border-color: var(--stroke-strong);
   filter: brightness(1.06);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.05)
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
 }
 
+/* Feedback click: utile se il JS passa subito alla prossima domanda */
 .answer:active .answerBox,
 .answer input[type="radio"]:active + .answerBox {
-  background: linear-gradient(90deg, #d20094, #900080);
+  background: linear-gradient(90deg, var(--magenta), var(--purple));
   border-color: rgba(255, 255, 255, 0.25);
-  box-shadow:
-    0 16px 36px rgba(210, 0, 148, 0.22),
-    0 12px 28px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 16px 36px rgba(210, 0, 148, 0.22), 0 12px 28px var(--shadow);
 }
 
+/* Selezione */
 .answer input:checked + .answerBox {
-  background: linear-gradient(90deg, #d20094, #900080);
+  background: linear-gradient(90deg, var(--magenta), var(--purple));
   border-color: rgba(255, 255, 255, 0.25);
-  box-shadow:
-    0 16px 36px rgba(210, 0, 148, 0.22),
-    0 12px 28px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 16px 36px rgba(210, 0, 148, 0.22), 0 12px 28px var(--shadow);
 }
 
+/* (se avete un dot nel markup) */
 .answerBox .dot {
   display: none;
 }
 
-.result-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.result-section div {
-  margin: 20px;
-  width: 200px;
-  height: 100px;
+/* Counter in basso */
+#contatore {
+  position: absolute;
+  left: 50%;
+  bottom: 38px;
+  transform: translateX(-50%);
   text-align: center;
+  padding: 0;
 }
 
-/*test per il gradiente
-.answer:active .answerBox {
-  background: linear-gradient(90deg, #D20094, #900080);
-  border-color: rgba(255,255,255,0.25);
-}*/
-
-/*quando il quiz non è attivo non si vede*/
-.welcome-section {
-  display: block;
-  max-width: 1020px;
-  margin: 0 auto;
+.question-counter {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.quiz-container {
-  display: none;
+.total-questions {
+  color: var(--magenta);
 }
 
-.result-section {
-  display: none;
-}
-
-/*quando il quiz è attivo sparisce la home*/
-body.quiz-active .welcome-section {
-  display: none;
-}
-
-body.quiz-active .result-section {
-  display: none;
-}
-
-body.quiz-active .quiz-container {
-  display: flex;
+/* =========================
+   RESULT VIEW
+   ========================= */
+body.result-active main {
+  padding: 0;
 }
 
 body.result-active .welcome-section {
@@ -430,12 +433,53 @@ body.result-active .result-section {
   display: flex;
 }
 
+.result-section {
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 60px;
+  text-align: center;
+}
+
+.result-section div {
+  margin: 20px;
+  width: min(420px, 92vw);
+  text-align: center;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 780px) {
+  header {
+    padding: 18px 18px;
+  }
+
+  main {
+    padding: 22px 18px;
+  }
+
+  .main-title span {
+    font-size: 44px;
+  }
+
+  .proceed-form {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .proceed-form button {
+    width: 100%;
+    text-align: center;
+  }
+
   body.quiz-active .quiz-container {
     padding: 0 22px;
   }
 
-  body.quiz-active .quiz-container .timer-wrapper {
+  .quiz-container .timer-wrapper {
     right: 22px;
     top: 14px;
     transform: scale(0.88);
